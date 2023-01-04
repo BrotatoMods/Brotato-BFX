@@ -1,0 +1,11 @@
+{
+	"id": "Darkly77-BFX",
+	"name": "BFX",
+	"version": "1.0.0",
+	"compatible_game_version": ["0.6.1.6"],
+	"authors": ["Darkly77"],
+	"description": "Effects and helpers",
+	"website_url": "",
+	"dependencies": [],
+	"incompatibilities": []
+}
