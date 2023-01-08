@@ -1,7 +1,9 @@
 class_name StartingItemFromArrayEffect
 extends Effect
 
-# Effect created by Psina
+# Creator: Psina
+# Type:    Character
+# Info:    Makes a character start with one item from the provided array of items
 
 export (Array, Resource) var items = []
 
