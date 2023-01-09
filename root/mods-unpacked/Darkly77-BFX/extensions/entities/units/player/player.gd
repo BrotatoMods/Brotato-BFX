@@ -18,7 +18,7 @@ func update_player_stats()->void:
 	_bfx_init_exploding_stats()
 
 
-# Note: `bypass_invincibility` is true when triggered via `_on_LoseHealthTimer_timeout` (via effect "lose_hp_per_second")
+# Note: `bypass_invincibility` is true when triggered via `_on_LoseHealthTimer_timeout` (via effect "lose_hp_per_second" - Sick/Blood Donation)
 # Note: `dodgeable` is true when true when ??? (see `current_stats.dodge`)
 func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->Array:
 	ModLoader.mod_log("take_damage", "BFX")
@@ -26,9 +26,8 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 	if _invincibility_timer.is_stopped() or bypass_invincibility:
 		var dmg_taken = .take_damage(value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale)
 
-		if dodgeable:
-			# Attack was dodged
-			_bfx_on_dodge(dmg_taken, value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale)
+		if dodgeable: # Attack was dodged
+			_bfx_on_dodge()
 
 		if dmg_taken[1] > 0:
 			if RunData.effects["temp_stats_on_hit"].size() > 0:
@@ -51,13 +50,29 @@ func get_iframes(damage_taken:float)->float:
 	return _bfx_modify_iframes_duration(.get_iframes(damage_taken))
 
 
+
+# Custom: On...
+# =============================================================================
+
+# Player took damage
+func _bfx_on_take_damage(dmg_taken, value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->void:
+	_bfx_temp_stats_on_hit(bypass_invincibility)
+	_bfx_explode_on_hit_chance(bypass_invincibility)
+
+
+# Player dodged an enemy's attack
+func _bfx_on_dodge()->void:
+	_bfx_temp_stats_on_dodge()
+
+
+
 # Custom
 # =============================================================================
 
 # Change the duration of iframes
 func _bfx_modify_iframes_duration(iframes):
 	if RunData.effects["bfx_iframes_duration_multiplier"] > 0:
-		iframes = iframes * (1 + (RunData.effects["bfx_iframes_duration_multiplier"] / 100))
+		iframes = iframes * (1 + (RunData.effects["bfx_iframes_duration_multiplier"] / 100.0))
 	return iframes
 
 
@@ -69,19 +84,15 @@ func _bfx_init_exploding_stats()->void:
 		_bfx_explode_on_hit_stats = WeaponService.init_base_stats(RunData.effects["bfx_explode_on_hit_chance"][0].stats, "", [], [ExplodingEffect.new()])
 
 
-# Player took damage
-func _bfx_on_take_damage(dmg_taken, value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->void:
-	_bfx_explode_on_hit_chance(bypass_invincibility)
-
-
-# Player dodged an enemy's attack
-func _bfx_on_dodge()->void:
-	_bfx_temp_stats_on_dodge()
+func _bfx_temp_stats_on_hit(bypass_invincibility:bool = false)->void:
+	if RunData.effects["bfx_temp_stats_on_hit"].size() > 0:
+		for temp_stat_on_hit in RunData.effects["bfx_temp_stats_on_hit"]:
+			TempStats.add_stat(temp_stat_on_hit[0], temp_stat_on_hit[1])
 
 
 # Basically identical to vanilla, except it also checks the chance%
 # @TODO: This needs a bit of a rework, to loop over an array of effects, instead of just using the first one (like vanilla does)
-func _bfx_explode_on_hit_chance(bypass_invincibility)->void:
+func _bfx_explode_on_hit_chance(bypass_invincibility:bool = false)->void:
 	if !bypass_invincibility: # doesn't trigger with "lose_hp_per_second" (Sick/Blood Donation)
 		if RunData.effects["bfx_explode_on_hit_chance"].size() > 0:
 			# effect  = Resource (item_exploding_effect.gd)

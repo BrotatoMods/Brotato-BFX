@@ -136,12 +136,14 @@ func bfx_get_player():
 # =============================================================================
 
 # RNG check. Pass an int. Returns true if it passes the check, false otherwise.
-# For floats, just use `if randf() <= chance_float`
-func bfx_rng_chance_int(chance_int:float)->bool:
-	var chance = min(1, chance_int / 100) # eg 20 gives 0.2 (20% chance)
-	return randf() >= chance
+func bfx_rng_chance_int(chance_int:int, max_chance:float = 1.0)->bool:
+	var chance_perc = chance_int / 100.0 # eg 20 = 0.2 (20% chance)
+	var chance_clamp = min(1, chance_perc) # ensure float doesn't go over 1
+	var chance_maxed = min(chance_clamp, max_chance) # ensure float doesn't go over the max
+	return randf() <= chance_maxed
 
-# For the sake of completeness
-func bfx_rng_chance_float(chance_float:float)->bool:
-	var chance = min(1, chance_float)
-	return randf() >= chance
+# Same as above but for floats
+# Alternatively, just use `randf() <= chance`
+func bfx_rng_chance_float(chance_float:float, max_chance:float = 1.0)->bool:
+	var chance = min(max_chance, min(1, chance_float))
+	return randf() <= chance

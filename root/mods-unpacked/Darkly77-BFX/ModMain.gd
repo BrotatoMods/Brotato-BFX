@@ -22,18 +22,20 @@ func _init(modLoader = ModLoader):
 	# Add extensions
 	var extensions = [
 		# Setup
-		"singletons/utils.gd",             # SETUP: Utility funcs
-		"singletons/debug_service.gd",     # SETUP: Installs extender for "res://ui/menus/shop/shop.gd"
-		"singletons/run_data.gd",          # SETUP: Keys for all BFX's custom effects
-		"singletons/text.gd",              # SETUP: Keys needing operators/percent
+		"singletons/utils.gd",          # SETUP: Utility funcs
+		"singletons/debug_service.gd",  # SETUP: Installs extender for "res://ui/menus/shop/shop.gd"
+		"singletons/run_data.gd",       # SETUP: Keys for all BFX's custom effects
+		"singletons/text.gd",           # SETUP: Keys needing operators/percent
 
 		# Effects
-		"main.gd",                         # EFFECTS: end of wave, level up
-		"entities/units/player/player.gd", # EFFECTS: take damage, iframes
-		"singletons/item_service.gd",      # EFFECTS: free reroll chance
+		"main.gd",                             # EFFECTS: end of wave, level up
+		"entities/units/enemies/boss/boss.gd", # EFFECTS: boss HP
+		"entities/units/enemies/enemy.gd",     # EFFECTS: dmg vs. burning enemies
+		"entities/units/player/player.gd",     # EFFECTS: on take damage/dodge, iframes
+		"singletons/item_service.gd",          # EFFECTS: free reroll chance
 
 		# Fixes
-		"singletons/temp_stats.gd",        # FIX: Allow using secondary stats in temp_stat
+		"singletons/temp_stats.gd", # FIX: Allow using secondary stats in temp_stat
 	]
 
 	for path in extensions:
