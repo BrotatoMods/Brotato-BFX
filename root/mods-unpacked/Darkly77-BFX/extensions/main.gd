@@ -9,13 +9,25 @@ const LOG_NAME = "BFX"
 # When the wave ends
 func _on_WaveTimer_timeout()->void:
 	._on_WaveTimer_timeout()
-	_bfx_bfx_gain_items_end_of_wave()
+	_bfx_gain_items_end_of_wave()
 
 
 # When you level up
 func on_levelled_up()->void:
 	.on_levelled_up()
-	_bfx_bfx_on_levelup_gain_random_stat()
+	_bfx_on_levelup_gain_random_stat()
+
+
+# When you collect a consumable
+func on_consumable_picked_up(consumable:Node)->void:
+	.on_consumable_picked_up(consumable)
+	_bfx_on_consumable_collect(consumable)
+
+
+#@todo: Add an effect that can replace consumables with a custom drop (eg. drop
+#armor via Wooden Tools for SG's Robbie
+# func spawn_consumables(unit:Unit)->void:
+	# pass
 
 
 # Custom
@@ -23,7 +35,7 @@ func on_levelled_up()->void:
 
 # @todo: Consider destroying the item after (or, actually, just add a custom
 # effect that do can do this)
-func _bfx_bfx_gain_items_end_of_wave():
+func _bfx_gain_items_end_of_wave():
 	if RunData.effects["bfx_gain_items_end_of_wave"] > 0:
 		# Add items
 		for i in RunData.effects["bfx_gain_items_end_of_wave"]:
@@ -45,9 +57,10 @@ func _bfx_bfx_gain_items_end_of_wave():
 		RunData.effects["bfx_gain_items_end_of_wave"] = 0
 
 
-# @todo: Rework? So the value is the random stat increase, rather than the number
-# of stats to increase
-func _bfx_bfx_on_levelup_gain_random_stat():
+# @todo: Rework? So the value is the random stat increase, rather than the
+# number of stats to increase (no, make a new custom effect.gd with options for:
+# chance, stat_name, is_random_primary, is_random_secondary, lose_stat
+func _bfx_on_levelup_gain_random_stat():
 	if RunData.effects["bfx_on_levelup_gain_random_stat"] > 0:
 		for i in RunData.effects["bfx_on_levelup_gain_random_stat"]:
 			# Get a random (primary) stat
@@ -62,3 +75,55 @@ func _bfx_bfx_on_levelup_gain_random_stat():
 			RunData.emit_signal("stat_added", random_stat_key, 1, -15.0)
 
 			ModLoader.mod_log(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), LOG_NAME)
+
+
+# When you pick up a consumable (fruit/crate)
+#@todo: Refactor this, as atm the code is duped for each effect
+func _bfx_on_consumable_collect(consumable:Node)->void:
+	print("[_bfx_on_consumable_collect] Collected")
+	if RunData.effects["bfx_explode_on_consumable_collect"].size() > 0:
+		print("[_bfx_on_consumable_collect] size ok")
+		var effect = RunData.effects["bfx_explode_on_consumable_collect"][0]
+		var stats  = _player._bfx_explode_on_consumable_collect_stats
+		var chance = effect.chance
+
+		if (Utils.bfx_rng_chance_float(chance)):
+			var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
+			# print("[_bfx_on_consumable_collect] chance ok")
+		# else:
+			# print("[_bfx_on_consumable_collect] CHANCE === NOOOOOOOOPE")
+	# else:
+		# print("[_bfx_on_consumable_collect] NOOOOOOOOPE")
+
+	if RunData.effects["bfx_explode_on_fruit_collect"].size() > 0:
+		if (consumable.consumable_data.my_id != "consumable_item_box" and consumable.consumable_data.my_id != "consumable_legendary_item_box"):
+			var effect = RunData.effects["bfx_explode_on_fruit_collect"][0]
+			var stats  = _player._bfx_explode_on_fruit_collect_stats
+			var chance = effect.chance
+
+			if (Utils.bfx_rng_chance_float(chance)):
+				var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
+
+	if RunData.effects["bfx_explode_on_crate_collect"].size() > 0:
+		if (consumable.consumable_data.my_id == "consumable_item_box" or consumable.consumable_data.my_id == "consumable_legendary_item_box"):
+			var effect = RunData.effects["bfx_explode_on_crate_collect"][0]
+			var stats  = _player._bfx_explode_on_crate_collect_stats
+			var chance = effect.chance
+
+			if (Utils.bfx_rng_chance_float(chance)):
+				var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
+
+
+# Helpers
+# =============================================================================
+
+# @todo: Use this. But need to check that the un-refactored code above is working correctly first
+# eg: _bfx_explode_helper("bfx_explode_on_consumable_collect", consumable.global_position, _player._bfx_explode_on_consumable_collect_stats)
+func _bfx_explode_helper(effect_name:String, position: Vector2, explosion_stats:Array)->void:
+	if RunData.effects[effect_name] > 0:
+		var effect = RunData.effects[effect_name][0]
+		var stats  = explosion_stats
+		var chance = effect.chance
+
+		if (Utils.bfx_rng_chance_float(chance)):
+			var _explosion = WeaponService.explode(effect, position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)

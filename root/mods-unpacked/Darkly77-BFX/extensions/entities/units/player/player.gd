@@ -3,6 +3,19 @@ extends "res://entities/units/player/player.gd"
 const LOG_NAME = "BFX"
 
 var _bfx_explode_on_hit_stats = null
+var _bfx_explode_on_consumable_collect_stats = null
+var _bfx_explode_on_fruit_collect_stats = null
+var _bfx_explode_on_crate_collect_stats = null
+
+#@todo: MAYBE: Refactor the vars above ^ to use this dict instead, and init it
+# with a func so it can be expanded with child mods;
+# See also: `_bfx_explode_helper`
+var _bfx_explosion_effects = {
+	"bfx_explode_on_hit_chance": null,
+	"bfx_explode_on_consumable_collect": null,
+	"bfx_explode_on_fruit_collect": null,
+	"bfx_explode_on_crate_collect": null,
+}
 
 
 # Extensions
@@ -55,7 +68,7 @@ func get_iframes(damage_taken:float)->float:
 # =============================================================================
 
 # Player took damage
-func _bfx_on_take_damage(dmg_taken, value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->void:
+func _bfx_on_take_damage(_dmg_taken, _value:int, _hitbox:Hitbox = null, _dodgeable:bool = true, _armor_applied:bool = true, _custom_sound:Resource = null, _base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->void:
 	_bfx_temp_stats_on_hit(bypass_invincibility)
 	_bfx_explode_on_hit_chance(bypass_invincibility)
 
@@ -83,15 +96,24 @@ func _bfx_init_exploding_stats()->void:
 	if RunData.effects["bfx_explode_on_hit_chance"].size() > 0:
 		_bfx_explode_on_hit_stats = WeaponService.init_base_stats(RunData.effects["bfx_explode_on_hit_chance"][0].stats, "", [], [ExplodingEffect.new()])
 
+	if RunData.effects["bfx_explode_on_consumable_collect"].size() > 0:
+		_bfx_explode_on_consumable_collect_stats = WeaponService.init_base_stats(RunData.effects["bfx_explode_on_consumable_collect"][0].stats, "", [], [ExplodingEffect.new()])
 
-func _bfx_temp_stats_on_hit(bypass_invincibility:bool = false)->void:
+	if RunData.effects["bfx_explode_on_fruit_collect"].size() > 0:
+		_bfx_explode_on_fruit_collect_stats = WeaponService.init_base_stats(RunData.effects["bfx_explode_on_fruit_collect"][0].stats, "", [], [ExplodingEffect.new()])
+
+	if RunData.effects["bfx_explode_on_crate_collect"].size() > 0:
+		_bfx_explode_on_crate_collect_stats = WeaponService.init_base_stats(RunData.effects["bfx_explode_on_crate_collect"][0].stats, "", [], [ExplodingEffect.new()])
+
+
+func _bfx_temp_stats_on_hit(_bypass_invincibility:bool = false)->void:
 	if RunData.effects["bfx_temp_stats_on_hit"].size() > 0:
 		for temp_stat_on_hit in RunData.effects["bfx_temp_stats_on_hit"]:
 			TempStats.add_stat(temp_stat_on_hit[0], temp_stat_on_hit[1])
 
 
 # Basically identical to vanilla, except it also checks the chance%
-# @TODO: This needs a bit of a rework, to loop over an array of effects, instead of just using the first one (like vanilla does)
+# @TODO: This needs a bit of a rework, to loop over an array of effects, instead of just using the first one like vanilla does
 func _bfx_explode_on_hit_chance(bypass_invincibility:bool = false)->void:
 	if !bypass_invincibility: # doesn't trigger with "lose_hp_per_second" (Sick/Blood Donation)
 		if RunData.effects["bfx_explode_on_hit_chance"].size() > 0:

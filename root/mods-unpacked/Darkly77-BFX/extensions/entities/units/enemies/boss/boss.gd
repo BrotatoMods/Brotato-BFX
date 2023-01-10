@@ -5,13 +5,15 @@ const LOG_NAME = "BFX"
 # Applies the effect that modifies boss HP
 # Note: `init_current_stats` is inherited from parent: unit.gd > enemy.gd > boss.gd
 
+#@todo: Should this go in enemy.gd, with `if unit is Boss:`?
+
 
 # Extensions
 # =============================================================================
 
 func init_current_stats()->void:
 	.init_current_stats()
-	_bfx_bfx_boss_hp()
+	_bfx_boss_hp()
 
 
 # Custom
@@ -22,7 +24,7 @@ func init_current_stats()->void:
 # Edit: Cap of 99% still seems to cause issues, probably because the code can't
 # handle the boss dying so fast (ie. there are things that should be set up, but
 # aren't yet). So the cap was changed to 90% (boss HP 28000 > 2800, ie 1/10th)
-func _bfx_bfx_boss_hp()->void:
+func _bfx_boss_hp()->void:
 	if RunData.effects["bfx_boss_hp"] != 0:
 		max_stats.copy_stats(stats)
 

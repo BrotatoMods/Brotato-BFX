@@ -16,7 +16,14 @@ EFFECT_BFX_GAIN_ITEMS_END_OF_WAVE,Gain {0} random items at the end of the next w
 EFFECT_BFX_IFRAMES_DURATION_MULTIPLIER,{0} % Invulnerability Time (iframes)
 EFFECT_BFX_ON_LEVELUP_GAIN_RANDOM_STAT,Gain [color=#00ff00]+1[/color] to {0} random stats when you level up
 EFFECT_BFX_FREE_REROLL_CHANCE,{0} % chance for your next reroll to be free
+EFFECT_BFX_EXPLODE_ON_HIT,You explode for {1} ({2}) damage when you take damage. [color=#555555]Doesn't trigger with items/traits that don't give invulnerability time[/color]
 EFFECT_BFX_EXPLODE_ON_HIT_CHANCE,{0}% chance to explode for {1} ({2}) damage when you take damage. [color=#555555]Doesn't trigger with items/traits that don't give invulnerability time[/color]
+EFFECT_BFX_EXPLODE_ON_CONSUMABLE_COLLECT,Consumables explode for {1} ({2}) when you collect them
+EFFECT_BFX_EXPLODE_ON_CONSUMABLE_COLLECT_CHANCE,{0}% chance for consumables explode for {1} ({2}) when you collect them
+EFFECT_BFX_EXPLODE_ON_FRUIT_COLLECT,Fruits explode for {1} ({2}) when you collect them
+EFFECT_BFX_EXPLODE_ON_FRUIT_COLLECT_CHANCE,{0}% chance for fruits explode for {1} ({2}) when you collect them
+EFFECT_BFX_EXPLODE_ON_CRATE_COLLECT,Crates explode for {1} ({2}) when you collect them
+EFFECT_BFX_EXPLODE_ON_CRATE_COLLECT_CHANCE,{0}% chance for crates explode for {1} ({2}) when you collect them
 EFFECT_BFX_TEMP_STATS_ON_DODGE,{0} {1} when you dodge until the end of the wave
 EFFECT_BFX_TEMP_STATS_ON_HIT,{0} {1} when you take damage until the end of the wave. [color=#555555]Doesn't trigger with items/traits that don't give invulnerability time[/color]
 EFFECT_BFX_BOSS_HP,Boss and Elite HP is modified by {0} %
@@ -26,5 +33,5 @@ EFFECT_BFX_DAMAGE_TO_BURNING_ENEMIES,{0} % damage to enemies that are burning
 S2,---TRACKING-------------------------
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_SAVINGS,Materials saved: {0}
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_FREE_REROLLS,Free rerolls: {0}
-Sx,---SPECIAL--------------------------
+Sx,---FLOATING TEXT POPUPS-------------
 FLOATING_GIFT_TEXT,Gift opened
