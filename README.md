@@ -13,19 +13,22 @@ Use these like regular effects with *effect.gd*:
 
 | key   | Type | Description |
 | ----- | ---- | ----------- |
+| `bfx_boss_hp`                     | int | Modify boss HP by `x`% (eg. `-20` = 80% HP) |
+| `bfx_damage_to_burning_enemies`   | int | Deal `x`% more/less damage to enemies that are burning |
 | `bfx_free_reroll_chance`          | int | Gives `x`% chance to gain a free reroll (max chance: 90%) |
 | `bfx_gain_items_end_of_wave`      | int | Gain `x` random items when a wave ends. |
 | `bfx_iframes_duration_multiplier` | int | Increase duration of iframes by `x`% (eg `25` = +25% duration). |
 | `bfx_on_levelup_gain_random_stat` | int | Gain +1 to `x` random stats when you level up. |
-| `bfx_boss_hp`                     | int | Modify boss HP by `x`% (eg. `-20` = 80% HP) |
-| `bfx_damage_to_burning_enemies`   | int | Deal `x`% more/less damage to enemies that are burning |
+| `bfx_turret_attack_speed`         | int | Turrets attack `x`% faster |
+| `bfx_turret_crit_chance`          | int | Turrets gain +`x`% crit chance |
+| `bfx_turret_damage`               | int | Turrets deal +`x`% more damage |
 
 ### stat_effect.gd
 
 | key   | Description |
 | ----- | ----------- |
-| `bfx_temp_stats_on_hit`   | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
 | `bfx_temp_stats_on_dodge` | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
+| `bfx_temp_stats_on_hit`   | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
 
 <small>† This means the effect won't trigger with items/traits that don't give invulnerability time (ie. Sick and Blood Donation)</small>
 
@@ -64,10 +67,9 @@ Effect keys are always `EFFECT_{effect_key}`:
 | `bfx_explode_on_consumable_collect` | `EFFECT_BFX_EXPLODE_ON_CONSUMABLE_COLLECT`<br>`EFFECT_BFX_EXPLODE_ON_CONSUMABLE_COLLECT_CHANCE` |
 | `bfx_explode_on_crate_collect`      | `EFFECT_BFX_EXPLODE_ON_CRATE_COLLECT`<br>`EFFECT_BFX_EXPLODE_ON_CRATE_COLLECT_CHANCE` |
 | `bfx_explode_on_fruit_collect`      | `EFFECT_BFX_EXPLODE_ON_FRUIT_COLLECT`<br>`EFFECT_BFX_EXPLODE_ON_FRUIT_COLLECT_CHANCE` |
-
-
-
-
+| `bfx_turret_attack_speed`           | `EFFECT_BFX_TURRET_ATTACK_SPEED` |
+| `bfx_turret_crit_chance`            | `EFFECT_BFX_TURRET_CRIT_CHANCE` |
+| `bfx_turret_damage`                 | `EFFECT_BFX_TURRET_DAMAGE` |
 
 
 ## Utility Functions

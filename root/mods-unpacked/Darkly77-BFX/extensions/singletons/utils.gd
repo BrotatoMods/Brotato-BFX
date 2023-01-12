@@ -147,3 +147,40 @@ func bfx_rng_chance_int(chance_int:int, max_chance:float = 1.0)->bool:
 func bfx_rng_chance_float(chance_float:float, max_chance:float = 1.0)->bool:
 	var chance = min(max_chance, min(1, chance_float))
 	return randf() <= chance
+
+# Multiply an value with an int as a percent
+#   Eg: bfx_int_percent_decrease(stat_max_hp, 20) = MaxHP -20%
+#   Eg: bfx_int_percent_increase(stat_max_hp, 20) = MaxHP +20%
+func bfx_int_percent_decrease(orig_val, multiply_with):
+	var result
+	# Without this, if the original value is 0 then nothing would change
+	if orig_val != 0:
+		result = orig_val * (1 - (multiply_with / 100.0))
+	else:
+		result = 1 - multiply_with / 100.0
+	return result
+
+func bfx_int_percent_increase(orig_val, multiply_with):
+	var result
+	# Without this, if the original value is 0 then nothing would change
+	if orig_val != 0:
+		result = orig_val * (1 + (multiply_with / 100.0))
+	else:
+		result = multiply_with / 100.0
+	return result
+
+# Good for capping % values at 0-1
+# Eg: cap_between(val, 0, 1) -- this is the same as just be written as min(1, max(0, val))
+func cap_between(val, lowest, highest):
+	val = max(lowest, val)  # get whichever is higher (eg, if lowest = 0,  then don't go below 0)
+	val = min(highest, val) # get whichever is lower  (eg, if highest = 1, then don't go above 1)
+	return val
+
+# Cap the value, so it cannot exceed `highest`
+# (it's easy to forget how min/max works)
+func cap_below(val, highest):
+	return min(highest, val)
+
+# Cap the value, so it cannot be lower than `lowest`
+func cap_above(val, lowest):
+	return max(lowest, val)

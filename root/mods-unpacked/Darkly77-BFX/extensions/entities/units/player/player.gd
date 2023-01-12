@@ -84,8 +84,8 @@ func _bfx_on_dodge()->void:
 
 # Change the duration of iframes
 func _bfx_modify_iframes_duration(iframes):
-	if RunData.effects["bfx_iframes_duration_multiplier"] > 0:
-		iframes = iframes * (1 + (RunData.effects["bfx_iframes_duration_multiplier"] / 100.0))
+	if RunData.effects["bfx_iframes_duration_multiplier"] != 0:
+		iframes = Utils.bfx_int_percent_increase(iframes, RunData.effects["bfx_iframes_duration_multiplier"])
 	return iframes
 
 

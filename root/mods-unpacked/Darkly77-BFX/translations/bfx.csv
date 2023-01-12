@@ -30,6 +30,9 @@ EFFECT_BFX_BOSS_HP,Boss and Elite HP is modified by {0} %
 EFFECT_BFX_BOSS_HP_INCREASE,Boss and Elite HP is increased by {0} %
 EFFECT_BFX_BOSS_HP_DECREASE,Boss and Elite HP is decreased by {0} %
 EFFECT_BFX_DAMAGE_TO_BURNING_ENEMIES,{0} % damage to enemies that are burning
+EFFECT_BFX_TURRET_ATTACK_SPEED,{0} % Turret Attack Speed
+EFFECT_BFX_TURRET_CRIT_CHANCE,{0} % Turret Crit Chance
+EFFECT_BFX_TURRET_DAMAGE,{0} % Turret Damage
 S2,---TRACKING-------------------------
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_SAVINGS,Materials saved: {0}
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_FREE_REROLLS,Free rerolls: {0}

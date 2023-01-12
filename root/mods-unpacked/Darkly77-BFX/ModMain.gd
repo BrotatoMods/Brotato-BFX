@@ -16,7 +16,7 @@ func _init(modLoader = ModLoader):
 
 	# Add extensions [old approach]
 	# modLoader.installScriptExtension(ext_dir + "entities/units/player/player.gd")
-	# modLoader.installScriptExtension(ext_dir + "singletons/debug_service.gd") # Installs extender for "res://ui/menus/shop/shop.gd"
+	# modLoader.installScriptExtension(ext_dir + "singletons/debug_service.gd")
 	# modLoader.installScriptExtension(ext_dir + "singletons/run_data.gd")
 
 	# Add extensions
@@ -28,11 +28,12 @@ func _init(modLoader = ModLoader):
 		"singletons/text.gd",           # SETUP: Keys needing operators/percent
 
 		# Effects
-		"main.gd",                             # EFFECTS: end of wave, level up
-		"entities/units/enemies/boss/boss.gd", # EFFECTS: boss HP
-		"entities/units/enemies/enemy.gd",     # EFFECTS: dmg vs. burning enemies
-		"entities/units/player/player.gd",     # EFFECTS: on take damage/dodge, iframes
-		"singletons/item_service.gd",          # EFFECTS: free reroll chance
+		"main.gd",                              # EFFECTS: end of wave, level up
+		"entities/structures/turret/turret.gd", # EFFECTS: turret attack speed
+		"entities/units/enemies/boss/boss.gd",  # EFFECTS: boss HP
+		"entities/units/enemies/enemy.gd",      # EFFECTS: dmg vs. burning enemies
+		"entities/units/player/player.gd",      # EFFECTS: on take damage/dodge, iframes
+		"singletons/item_service.gd",           # EFFECTS: free reroll chance
 
 		# Fixes
 		"singletons/temp_stats.gd", # FIX: Allow using secondary stats in temp_stat

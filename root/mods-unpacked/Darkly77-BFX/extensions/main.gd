@@ -120,7 +120,7 @@ func _bfx_on_consumable_collect(consumable:Node)->void:
 # @todo: Use this. But need to check that the un-refactored code above is working correctly first
 # eg: _bfx_explode_helper("bfx_explode_on_consumable_collect", consumable.global_position, _player._bfx_explode_on_consumable_collect_stats)
 func _bfx_explode_helper(effect_name:String, position: Vector2, explosion_stats:Array)->void:
-	if RunData.effects[effect_name] > 0:
+	if RunData.effects[effect_name].size() > 0:
 		var effect = RunData.effects[effect_name][0]
 		var stats  = explosion_stats
 		var chance = effect.chance

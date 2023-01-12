@@ -59,9 +59,14 @@ func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
 		"bfx_damage_to_burning_enemies": 0, #int
 
 		# Explode when you collect a consumable/fruit/crate (consumable = both fruit and crate)
-		"bfx_explode_on_consumable_collect": [], #array
-		"bfx_explode_on_crate_collect": [], #array
-		"bfx_explode_on_fruit_collect": [], #array
+		"bfx_explode_on_consumable_collect": [], # array
+		"bfx_explode_on_crate_collect": [], # array
+		"bfx_explode_on_fruit_collect": [], # array
+
+		# Turret stats
+		"bfx_turret_attack_speed": 0, #int (%)
+		"bfx_turret_crit_chance": 0, #int (%)
+		"bfx_turret_damage": 0, #int (%)
 	}
 
 	return Utils.merge_dictionaries(vanilla_effects, custom_effects)
