@@ -12,7 +12,7 @@ func _init(modLoader = ModLoader):
 	ext_dir = dir + "extensions/"
 
 	# Add translations
-	modLoader.add_translation_from_resource(dir + "translations/bfx.en.translation")
+	modLoader.add_translation_from_resource(dir + "translations/mod_bfx.en.translation")
 
 	# Add extensions [old approach]
 	# modLoader.install_script_extension(ext_dir + "entities/units/player/player.gd")
