@@ -1,6 +1,6 @@
 extends "res://entities/units/enemies/enemy.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 # Extra damage against burning enemies
 
@@ -26,22 +26,22 @@ func _bfx_damage_to_burning_enemies(dmg:int)->int:
 
 		# Enemy is currently burning
 		if _burning_particles.emitting:
-			ModLoader.mod_log("@peem:Enemy is burning - APPLY EXTRA DMG", LOG_NAME)
+			# ModLoaderUtils.log_info("[bfx_damage_to_burning_enemies] Enemy is burning - APPLY EXTRA DMG", BFX_LOG)
 
 			var dmg_old = dmg
 			var dmg_add = RunData.effects["bfx_damage_to_burning_enemies"]
 			var dmg_mod = 1 + (RunData.effects["bfx_damage_to_burning_enemies"] / 100.0)
 			var new_dmg = dmg_old * dmg_mod
 
-			ModLoader.mod_log("DMG_ADD=" + str(dmg_add), LOG_NAME)
-			ModLoader.mod_log("dmg_OLD=" + str(dmg_old), LOG_NAME)
-			ModLoader.mod_log("dmg_MOD=" + str(dmg_mod), LOG_NAME)
-			ModLoader.mod_log("dmg_NEW=" + str(new_dmg), LOG_NAME)
+			ModLoaderUtils.log_info("DMG_ADD=" + str(dmg_add), BFX_LOG)
+			ModLoaderUtils.log_info("dmg_OLD=" + str(dmg_old), BFX_LOG)
+			ModLoaderUtils.log_info("dmg_MOD=" + str(dmg_mod), BFX_LOG)
+			ModLoaderUtils.log_info("dmg_NEW=" + str(new_dmg), BFX_LOG)
 
 			dmg = new_dmg
 
 		else:
-			# ModLoader.mod_log("@peem:Enemy is NOT burning", LOG_NAME)
+			# ModLoaderUtils.log_info("[bfx_damage_to_burning_enemies] Enemy is NOT burning", BFX_LOG)
 			pass
 
 	return dmg

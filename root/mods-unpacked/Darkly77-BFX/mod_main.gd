@@ -1,28 +1,27 @@
 extends Node
 
 const MOD_DIR = "Darkly77-BFX/"
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 var dir = ""
 var ext_dir = ""
 
 func _init(modLoader = ModLoader):
-	modLoader.mod_log("Init", LOG_NAME)
+	ModLoaderUtils.log_info("Init", BFX_LOG)
 	dir = modLoader.UNPACKED_DIR + MOD_DIR
 	ext_dir = dir + "extensions/"
 
 	# Add translations
-	modLoader.addTranslationFromResource(dir + "translations/bfx.en.translation")
+	modLoader.add_translation_from_resource(dir + "translations/bfx.en.translation")
 
 	# Add extensions [old approach]
-	# modLoader.installScriptExtension(ext_dir + "entities/units/player/player.gd")
-	# modLoader.installScriptExtension(ext_dir + "singletons/debug_service.gd")
-	# modLoader.installScriptExtension(ext_dir + "singletons/run_data.gd")
+	# modLoader.install_script_extension(ext_dir + "entities/units/player/player.gd")
+	# modLoader.install_script_extension(ext_dir + "singletons/debug_service.gd")
+	# modLoader.install_script_extension(ext_dir + "singletons/run_data.gd")
 
 	# Add extensions
 	var extensions = [
 		# Setup
-		"singletons/utils.gd",          # SETUP: Utility funcs
 		"singletons/debug_service.gd",  # SETUP: Installs extender for "res://ui/menus/shop/shop.gd"
 		"singletons/run_data.gd",       # SETUP: Keys for all BFX's custom effects
 		"singletons/text.gd",           # SETUP: Keys needing operators/percent
@@ -40,8 +39,8 @@ func _init(modLoader = ModLoader):
 	]
 
 	for path in extensions:
-		modLoader.installScriptExtension(ext_dir + path)
+		modLoader.install_script_extension(ext_dir + path)
 
 
 func _ready():
-	ModLoader.mod_log("Done", LOG_NAME)
+	ModLoaderUtils.log_info("Done", BFX_LOG)

@@ -1,6 +1,6 @@
 extends "res://entities/units/player/player.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 var _bfx_explode_on_hit_stats = null
 var _bfx_explode_on_consumable_collect_stats = null
@@ -34,7 +34,7 @@ func update_player_stats()->void:
 # Note: `bypass_invincibility` is true when triggered via `_on_LoseHealthTimer_timeout` (via effect "lose_hp_per_second" - Sick/Blood Donation)
 # Note: `dodgeable` is true when true when ??? (see `current_stats.dodge`)
 func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->Array:
-	ModLoader.mod_log("take_damage", "BFX")
+	ModLoaderUtils.log_info("take_damage", "BFX")
 
 	if _invincibility_timer.is_stopped() or bypass_invincibility:
 		var dmg_taken = .take_damage(value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale)
@@ -85,7 +85,7 @@ func _bfx_on_dodge()->void:
 # Change the duration of iframes
 func _bfx_modify_iframes_duration(iframes):
 	if RunData.effects["bfx_iframes_duration_multiplier"] != 0:
-		iframes = Utils.bfx_int_percent_increase(iframes, RunData.effects["bfx_iframes_duration_multiplier"])
+		iframes = Utils.brotils_int_percent_increase(iframes, RunData.effects["bfx_iframes_duration_multiplier"])
 	return iframes
 
 
@@ -124,7 +124,7 @@ func _bfx_explode_on_hit_chance(bypass_invincibility:bool = false)->void:
 			var stats  = _bfx_explode_on_hit_stats
 			var chance = effect.chance
 
-			if (Utils.bfx_rng_chance_float(chance)):
+			if (Utils.brotils_rng_chance_float(chance)):
 				var _explosion = WeaponService.explode(effect, global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
 
 

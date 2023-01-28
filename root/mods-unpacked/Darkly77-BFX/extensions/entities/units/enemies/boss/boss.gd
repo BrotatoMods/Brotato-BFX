@@ -1,6 +1,6 @@
 extends "res://entities/units/enemies/boss/boss.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 # Applies the effect that modifies boss HP
 # Note: `init_current_stats` is inherited from parent: unit.gd > enemy.gd > boss.gd

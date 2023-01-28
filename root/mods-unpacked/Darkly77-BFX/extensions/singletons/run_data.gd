@@ -1,6 +1,6 @@
 extends "res://singletons/run_data.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 
 # Extensions
@@ -22,7 +22,7 @@ func init_tracked_effects()->Dictionary:
 
 # Adds BFX's custom effects to the vanilla set
 func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
-	ModLoader.mod_log("Adding custom effects", LOG_NAME)
+	ModLoaderUtils.log_info("Adding custom effects", BFX_LOG)
 
 	# Note: Some effects will need their keys adding to the extended text.gd
 	# See: mods-unpacked/Darkly77-BFX/extensions/singletons/text.gd

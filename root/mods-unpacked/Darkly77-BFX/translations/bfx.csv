@@ -1,5 +1,5 @@
 keys,en
-S0,---OLD STUFF FROM INVASION----------
+OLD,---OLD STUFF FROM INVASION---------
 EFFECT_BOUNCE_DAMAGE_CUSTOM,[color=#00ff00]+[/color]{0}[color=#00ff00]%[/color] Bounce Damage. Can't go above base damage
 EFFECT_REDUCE_NEGATIVE_STAT,"Reduce a random negative stat to half its negative value (no effect if no stats are negative) \n\nAffected stat: {1} \nIncrease: {0}"
 EFFECT_SHOP_MIN_TIER,Shops always sell weapons at tier {0} or above
@@ -11,7 +11,7 @@ EFFECT_MULTIPLY_STAT,Your current {1} is {2} by {0} [{3}]
 EFFECT_MULTIPLY_DOUBLE,Doubles your current {1} [{3}]
 EFFECT_MULTIPLY_HALF,Halves your current {1} [{3}]
 EFFECT_WEAPON_SLOT_ADD,Increase your weapon slots by {0}
-S1,---EFFECTS--------------------------
+EFF,---EFFECTS-------------------------
 EFFECT_BFX_GAIN_ITEMS_END_OF_WAVE,Gain {0} random items at the end of the next wave. [color=#555555]Items and tiers are random and unaffected by Luck[/color]
 EFFECT_BFX_IFRAMES_DURATION_MULTIPLIER,{0} % Invulnerability Time (iframes)
 EFFECT_BFX_ON_LEVELUP_GAIN_RANDOM_STAT,Gain [color=#00ff00]+1[/color] to {0} random stats when you level up
@@ -33,8 +33,9 @@ EFFECT_BFX_DAMAGE_TO_BURNING_ENEMIES,{0} % damage to enemies that are burning
 EFFECT_BFX_TURRET_ATTACK_SPEED,{0} % Turret Attack Speed
 EFFECT_BFX_TURRET_CRIT_CHANCE,{0} % Turret Crit Chance
 EFFECT_BFX_TURRET_DAMAGE,{0} % Turret Damage
-S2,---TRACKING-------------------------
+TRK,---TRACKING------------------------
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_SAVINGS,Materials saved: {0}
 TRACKING_EFFECT_BFX_FREE_REROLL_CHANCE_FREE_REROLLS,Free rerolls: {0}
-Sx,---FLOATING TEXT POPUPS-------------
+FLT,---FLOATING TEXT POPUPS------------
 FLOATING_GIFT_TEXT,Gift opened
+CHL,---CHALLENGES----------------------

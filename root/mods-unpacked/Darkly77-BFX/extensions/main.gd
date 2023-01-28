@@ -1,6 +1,6 @@
 extends "res://main.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 
 # Extensions
@@ -42,7 +42,7 @@ func _bfx_gain_items_end_of_wave():
 			var item_id = Utils.get_rand_element(ProgressData.items_unlocked) # used to use `ItemService.items`
 			var item_data = ItemService.get_element(ItemService.items, item_id)
 			RunData.add_item(item_data)
-			ModLoader.mod_log(str("[bfx_gain_items_end_of_wave] Added item: ", tr(item_data.name)), "BFX")
+			ModLoaderUtils.log_info(str("[bfx_gain_items_end_of_wave] Added item: ", tr(item_data.name)), "BFX")
 
 		# SFX
 		SoundManager.play(level_up_sound, 0, 0, true)
@@ -64,7 +64,7 @@ func _bfx_on_levelup_gain_random_stat():
 	if RunData.effects["bfx_on_levelup_gain_random_stat"] > 0:
 		for i in RunData.effects["bfx_on_levelup_gain_random_stat"]:
 			# Get a random (primary) stat
-			var random_stat_key = Utils.get_rand_element(Utils.bfx_get_primary_stat_keys())
+			var random_stat_key = Utils.get_rand_element(Utils.brotils_get_primary_stat_keys())
 
 			# Add stat
 			# TempStats.add_stat(random_stat_key, 1) # oops, this shouldn't be temporary!
@@ -74,26 +74,21 @@ func _bfx_on_levelup_gain_random_stat():
 			# Triggers `on_stat_added` in floating_text_manager.gd (stat:String, value:int, db_mod:float = 0.0)
 			RunData.emit_signal("stat_added", random_stat_key, 1, -15.0)
 
-			ModLoader.mod_log(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), LOG_NAME)
+			ModLoaderUtils.log_info(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), BFX_LOG)
 
 
 # When you pick up a consumable (fruit/crate)
 #@todo: Refactor this, as atm the code is duped for each effect
 func _bfx_on_consumable_collect(consumable:Node)->void:
-	print("[_bfx_on_consumable_collect] Collected")
+	# print("[_bfx_on_consumable_collect] Collected")
 	if RunData.effects["bfx_explode_on_consumable_collect"].size() > 0:
-		print("[_bfx_on_consumable_collect] size ok")
+		# print("[_bfx_on_consumable_collect] size ok")
 		var effect = RunData.effects["bfx_explode_on_consumable_collect"][0]
 		var stats  = _player._bfx_explode_on_consumable_collect_stats
 		var chance = effect.chance
 
-		if (Utils.bfx_rng_chance_float(chance)):
+		if (Utils.brotils_rng_chance_float(chance)):
 			var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
-			# print("[_bfx_on_consumable_collect] chance ok")
-		# else:
-			# print("[_bfx_on_consumable_collect] CHANCE === NOOOOOOOOPE")
-	# else:
-		# print("[_bfx_on_consumable_collect] NOOOOOOOOPE")
 
 	if RunData.effects["bfx_explode_on_fruit_collect"].size() > 0:
 		if (consumable.consumable_data.my_id != "consumable_item_box" and consumable.consumable_data.my_id != "consumable_legendary_item_box"):
@@ -101,7 +96,7 @@ func _bfx_on_consumable_collect(consumable:Node)->void:
 			var stats  = _player._bfx_explode_on_fruit_collect_stats
 			var chance = effect.chance
 
-			if (Utils.bfx_rng_chance_float(chance)):
+			if (Utils.brotils_rng_chance_float(chance)):
 				var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
 
 	if RunData.effects["bfx_explode_on_crate_collect"].size() > 0:
@@ -110,7 +105,7 @@ func _bfx_on_consumable_collect(consumable:Node)->void:
 			var stats  = _player._bfx_explode_on_crate_collect_stats
 			var chance = effect.chance
 
-			if (Utils.bfx_rng_chance_float(chance)):
+			if (Utils.brotils_rng_chance_float(chance)):
 				var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
 
 
@@ -125,5 +120,5 @@ func _bfx_explode_helper(effect_name:String, position: Vector2, explosion_stats:
 		var stats  = explosion_stats
 		var chance = effect.chance
 
-		if (Utils.bfx_rng_chance_float(chance)):
+		if (Utils.brotils_rng_chance_float(chance)):
 			var _explosion = WeaponService.explode(effect, position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)

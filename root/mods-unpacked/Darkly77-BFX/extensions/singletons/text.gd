@@ -1,6 +1,6 @@
 extends "res://singletons/text.gd"
 
-const LOG_NAME = "BFX"
+const BFX_LOG = "Darkly77-BFX"
 
 #@todo: These don't seem to be working?
 
