@@ -72,33 +72,6 @@ Effect keys are always `EFFECT_{effect_key}`:
 | `bfx_turret_damage`                 | `EFFECT_BFX_TURRET_DAMAGE` |
 
 
-## Utility Functions
-
-Usage: `Utils.method`. These are all defined in [utils.gd](root/mods-unpacked/Darkly77-BFX/extensions/singletons/utils.gd).
-
-```
-# General
-bfx_join_array(arr, separator = "")->String
-bfx_text_color(text:String, clr:String)->String
-
-# Get Stats
-bfx_get_primary_stat_keys(exclude_explosions:bool = true)->Array
-bfx_get_random_primary_stat_key(exclude_explosions:bool = true)->bool
-bfx_get_primary_stats_by_sign(target_stat_sign:int)->Array
-bfx_get_positive_primary_stats()->Array
-bfx_get_negative_primary_stats()->Array
-bfx_get_neutral_primary_stats()->Array
-
-# Character/Player
-bfx_get_current_character()->CharacterData
-bfx_current_character_is(character_id:String)->bool
-bfx_get_player()->Player
-
-# RNG
-bfx_rng_chance_int(chance_int:float, max_chance:float = 1.0)->bool:
-bfx_rng_chance_float(chance_float:float, max_chance:float = 1.0)->bool:
-```
-
 
 ## Fixes
 
