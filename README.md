@@ -8,8 +8,8 @@ Originally built for [Invasion](https://github.com/BrotatoMods/Brotato-Invasion-
 
 ## Requirements
 
-* [ModLoader](https://github.com/GodotModding/godot-mod-loader) - v4+
-* [BFX](https://github.com/BrotatoMods/Brotato-BFX/) - v1.0.1+
+* [ModLoader](https://github.com/GodotModding/godot-mod-loader) - v4.1+
+* [Brotils](https://github.com/BrotatoMods/Brotato-Brotils/) - v1.0+
 
 ## Effects
 
