@@ -8,10 +8,10 @@ const BFX_LOG = "Darkly77-BFX"
 # Extensions
 # =============================================================================
 
-func get_dmg_value(dmg_value:int, armor_applied:bool = true)->int:
+func get_dmg_value(dmg_value:int, armor_applied:bool = true, is_crit:bool = false)->int:
 	# Vanilla reference:
 	# return max(1, dmg_value - current_stats.armor) as int if armor_applied else dmg_value
-	var dmg = .get_dmg_value(dmg_value, armor_applied)
+	var dmg = .get_dmg_value(dmg_value, armor_applied, is_crit)
 
 	dmg = _bfx_damage_to_burning_enemies(dmg)
 
