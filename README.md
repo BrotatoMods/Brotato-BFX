@@ -1,9 +1,15 @@
 # Brotato-BFX
 
+![GitHub all releases](https://img.shields.io/github/downloads/BrotatoMods/Brotato-BFX/total)
+
 BFX is a library of effects (FX) and utility funcs for modding Brotato. It's used with [ModLoader](https://github.com/BrotatoMods/Brotato-ModLoader), acting as a dependancy for other mods to build off of.
 
 Originally built for [Invasion](https://github.com/BrotatoMods/Brotato-Invasion-Mod), but can be used with other Brotato mods too.
 
+## Requirements
+
+* [ModLoader](https://github.com/GodotModding/godot-mod-loader) - v4.1+
+* [Brotils](https://github.com/BrotatoMods/Brotato-Brotils/) - v1.0+
 
 ## Effects
 
