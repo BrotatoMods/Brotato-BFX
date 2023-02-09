@@ -5,10 +5,10 @@ type="Translation"
 
 [deps]
 
-files=[ "res://mods-unpacked/Darkly77-BFX/translations/bfx.en.translation" ]
+files=[ "res://mods-unpacked/Darkly77-BFX/translations/mod_bfx.en.translation" ]
 
-source_file="res://mods-unpacked/Darkly77-BFX/translations/bfx.csv"
-dest_files=[ "res://mods-unpacked/Darkly77-BFX/translations/bfx.en.translation" ]
+source_file="res://mods-unpacked/Darkly77-BFX/translations/mod_bfx.csv"
+dest_files=[ "res://mods-unpacked/Darkly77-BFX/translations/mod_bfx.en.translation" ]
 
 [params]
 
