@@ -21,7 +21,7 @@ Use these like regular effects with *effect.gd*:
 | ----- | ---- | ----------- |
 | `bfx_boss_hp`                     | int | Modify boss HP by `x`% (eg. `-20` = 80% HP) |
 | `bfx_damage_to_burning_enemies`   | int | Deal `x`% more/less damage to enemies that are burning |
-| `bfx_free_reroll_chance`          | int | Gives `x`% chance to gain a free reroll (max chance: 90%) |
+| `bfx_reroll_cost`                 | int | Gives `x`% discount/increase to rerolls (hardcoded max: 90%) |
 | `bfx_gain_items_end_of_wave`      | int | Gain `x` random items when a wave ends. |
 | `bfx_iframes_duration_multiplier` | int | Increase duration of iframes by `x`% (eg `25` = +25% duration). |
 | `bfx_on_levelup_gain_random_stat` | int | Gain +1 to `x` random stats when you level up. |
@@ -62,7 +62,7 @@ Effect keys are always `EFFECT_{effect_key}`:
 
 | key   | text_key   |
 | ----- | ---------- |
-| `bfx_free_reroll_chance`            | `EFFECT_BFX_FREE_REROLL_CHANCE` |
+| `bfx_reroll_cost`                   | `EFFECT_BFX_REROLL_COST` |
 | `bfx_gain_items_end_of_wave`        | `EFFECT_BFX_GAIN_ITEMS_END_OF_WAVE`      |
 | `bfx_iframes_duration_multiplier`   | `EFFECT_BFX_IFRAMES_DURATION_MULTIPLIER` |
 | `bfx_on_levelup_gain_random_stat`   | `EFFECT_BFX_ON_LEVELUP_GAIN_RANDOM_STAT` |
@@ -76,8 +76,6 @@ Effect keys are always `EFFECT_{effect_key}`:
 | `bfx_turret_attack_speed`           | `EFFECT_BFX_TURRET_ATTACK_SPEED` |
 | `bfx_turret_crit_chance`            | `EFFECT_BFX_TURRET_CRIT_CHANCE` |
 | `bfx_turret_damage`                 | `EFFECT_BFX_TURRET_DAMAGE` |
-
-
 
 ## Fixes
 

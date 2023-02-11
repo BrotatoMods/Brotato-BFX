@@ -12,9 +12,6 @@ func _ready()->void:
 func init_effects()->Dictionary:
 	return _bfx_add_custom_effects(.init_effects())
 
-func init_tracked_effects()->Dictionary:
-	return _bfx_add_tracked_effects(.init_tracked_effects())
-
 
 # Custom
 # =============================================================================
@@ -38,9 +35,8 @@ func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
 		# On level up: Gain a random stat
 		"bfx_on_levelup_gain_random_stat": 0, # int (number of random stats to gain)
 
-		# Gives a % chance to gain a free reroll (after rerolling once)
-		#@todo: Needs fixing
-		"bfx_free_reroll_chance": 0, # int
+		# % discount/increase to rerolls
+		"bfx_reroll_cost": 0, # int
 
 		# Same as vanilla `temp_stats_on_hit`, but doesn't proc if bypassing invulnerability (Sick/Blood Donation)
 		"bfx_temp_stats_on_hit": [], # array
@@ -77,16 +73,3 @@ func _bfx_effect_keys_full_serialization()->void:
 	# @todo: Work out why this doesn't work, and fix it
 	# effect_keys_full_serialization.push_back("bfx_explode_on_hit_chance")
 	pass
-
-
-# Allows items that use these effects to track their stats.
-# Increase the stat with:
-#   RunData.tracked_item_effects["NAME"] += 1
-# @todo: Fix this. Atm, vanilla only accepts item IDs, see: items/global/item_parent_data.gd
-#        Perhaps we can make it work with effect IDs too?
-func _bfx_add_tracked_effects(effects_edit:Dictionary)->Dictionary:
-	# bfx_free_reroll_chance
-	effects_edit["bfx_effect_bfx_free_reroll_chance_savings"] = 0 # int
-	effects_edit["bfx_effect_bfx_free_reroll_chance_free_rerolls"] = 0 # int
-
-	return effects_edit
