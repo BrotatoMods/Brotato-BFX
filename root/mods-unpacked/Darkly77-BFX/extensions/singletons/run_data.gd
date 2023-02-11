@@ -7,7 +7,6 @@ const BFX_LOG = "Darkly77-BFX"
 # =============================================================================
 
 func _ready()->void:
-	._ready()
 	_bfx_effect_keys_full_serialization()
 
 func init_effects()->Dictionary:

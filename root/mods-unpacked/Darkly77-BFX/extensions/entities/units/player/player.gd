@@ -22,7 +22,6 @@ var _bfx_explosion_effects = {
 # =============================================================================
 
 func _ready()->void:
-	._ready()
 	_bfx_init_exploding_stats()
 
 

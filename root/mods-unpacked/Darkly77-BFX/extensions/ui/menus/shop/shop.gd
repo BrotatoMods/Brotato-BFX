@@ -3,7 +3,7 @@ extends "res://ui/menus/shop/shop.gd"
 # Nothing here is used, this is just a reference for later
 
 func _ready():
-	._ready()
+	pass
 	# print("TEST2=OK: res://ui/menus/shop/shop.gd")
 
 # Set the reroll button cost to 9999 (takes effect after the first reroll)

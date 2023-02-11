@@ -9,7 +9,6 @@ const BFX_LOG = "Darkly77-BFX"
 # =============================================================================
 
 func _ready()->void:
-	._ready()
 	_bfx_turret_stat_mods()
 
 
