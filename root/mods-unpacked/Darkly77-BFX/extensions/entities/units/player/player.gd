@@ -38,7 +38,7 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 	if _invincibility_timer.is_stopped() or bypass_invincibility:
 		var dmg_taken = .take_damage(value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale)
 
-		if dodgeable: # Attack was dodged
+		if dmg_taken[2]: # Attack was dodged
 			_bfx_on_dodge()
 
 		if dmg_taken[1] > 0:
