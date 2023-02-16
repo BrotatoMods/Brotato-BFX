@@ -36,12 +36,13 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 	# ModLoaderUtils.log_info("take_damage", "BFX")
 
 	if _invincibility_timer.is_stopped() or bypass_invincibility:
+		# See: `func take_damage` in unit.gd: [full_dmg_value, dmg_dealt, is_dodge]
 		var dmg_taken = .take_damage(value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale)
 
-		if dmg_taken[2]: # Attack was dodged
+		if dmg_taken.size() > 2 and dmg_taken[2]: # Attack was dodged
 			_bfx_on_dodge()
 
-		if dmg_taken[1] > 0:
+		if dmg_taken[1] > 0: # dmg_dealt
 			if RunData.effects["temp_stats_on_hit"].size() > 0:
 				pass
 				# Vanilla Reference:
@@ -52,6 +53,7 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 			_bfx_on_take_damage(dmg_taken, value, hitbox, dodgeable, armor_applied, custom_sound, base_effect_scale, bypass_invincibility)
 
 		return dmg_taken
+
 	return [0, 0]
 
 
