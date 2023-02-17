@@ -28,8 +28,8 @@ Use these like regular effects with *effect.gd*:
 | `bfx_turret_attack_speed`         | int | Turrets attack `x`% faster |
 | `bfx_turret_crit_chance`          | int | Turrets gain +`x`% crit chance |
 | `bfx_turret_damage`               | int | Turrets deal +`x`% more damage |
-| `bfx_temp_stats_on_dodge`         | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
-| `bfx_temp_stats_on_hit`           | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
+| `bfx_temp_stats_on_dodge`         | int | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
+| `bfx_temp_stats_on_hit`           | int | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
 | `bfx_gain_materials_on_fruit_collect` | int | Gain +x materials when you collect a fruit.<br>Similar to vanilla's `item_box_gold` (which only applies to crates) |
 
 <small>† This means the effect won't trigger with items/traits that don't give invulnerability time (ie. Sick and Blood Donation)</small>
