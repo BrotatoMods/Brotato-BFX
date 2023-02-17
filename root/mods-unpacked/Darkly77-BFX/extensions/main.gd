@@ -108,6 +108,14 @@ func _bfx_on_consumable_collect(consumable:Node)->void:
 			if (Utils.brotils_rng_chance_float(chance)):
 				var _explosion = WeaponService.explode(effect, consumable.global_position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
 
+	# +x materials when you pick up a fruit
+	if RunData.effects["bfx_gain_materials_on_fruit_collect"] != 0:
+		var gold_gain = RunData.effects["bfx_gain_materials_on_fruit_collect"]
+		if gold_gain > 0:
+			RunData.add_gold(gold_gain)
+		else:
+			RunData.remove_gold(gold_gain)
+
 
 # Helpers
 # =============================================================================

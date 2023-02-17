@@ -32,6 +32,7 @@ func _bfx_add_keys_needing_operator()->void:
 	keys_needing_operator["effect_bfx_gain_items_end_of_wave"] = [0]
 	keys_needing_operator["effect_bfx_reroll_cost"] = [0]
 	keys_needing_operator["effect_bfx_turret_crit_chance"] = [0]
+	keys_needing_operator["effect_bfx_gain_materials_on_fruit_collect"] = [0]
 
 
 # Adds %, eg `number_of_enemies`

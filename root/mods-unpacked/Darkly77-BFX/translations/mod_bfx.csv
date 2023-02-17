@@ -33,6 +33,7 @@ EFFECT_BFX_DAMAGE_TO_BURNING_ENEMIES,{0} damage to enemies that are burning
 EFFECT_BFX_TURRET_ATTACK_SPEED,{0} % Turret Attack Speed
 EFFECT_BFX_TURRET_CRIT_CHANCE,Turrets gain {0} Crit Chance
 EFFECT_BFX_TURRET_DAMAGE,{0} % Turret Damage
+EFFECT_BFX_GAIN_MATERIALS_ON_FRUIT_COLLECT,{0} materials when you pick up a fruit
 FLT,---FLOATING TEXT POPUPS------------
 FLOATING_GIFT_TEXT,Gift opened
 CHL,---CHALLENGES----------------------

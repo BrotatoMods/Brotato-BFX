@@ -2,7 +2,7 @@
 
 ![GitHub all releases](https://img.shields.io/github/downloads/BrotatoMods/Brotato-BFX/total)
 
-BFX is a library of effects (FX) and utility funcs for modding Brotato. It's used with [ModLoader](https://github.com/BrotatoMods/Brotato-ModLoader), acting as a dependancy for other mods to build off of.
+BFX is a library of effects (FX) for modding Brotato. It's used with [ModLoader](https://github.com/BrotatoMods/Brotato-ModLoader), acting as a dependancy for other mods to build off of.
 
 Originally built for [Invasion](https://github.com/BrotatoMods/Brotato-Invasion-Mod), but can be used with other Brotato mods too.
 
@@ -30,6 +30,7 @@ Use these like regular effects with *effect.gd*:
 | `bfx_turret_damage`               | int | Turrets deal +`x`% more damage |
 | `bfx_temp_stats_on_dodge`         | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
 | `bfx_temp_stats_on_hit`           | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
+| `bfx_gain_materials_on_fruit_collect` | int | Gain +x materials when you collect a fruit.<br>Similar to vanilla's `item_box_gold` (which only applies to crates) |
 
 <small>† This means the effect won't trigger with items/traits that don't give invulnerability time (ie. Sick and Blood Donation)</small>
 
@@ -66,6 +67,7 @@ Effect keys are always `EFFECT_{effect_key}`:
 | `bfx_turret_attack_speed`           | `EFFECT_BFX_TURRET_ATTACK_SPEED` |
 | `bfx_turret_crit_chance`            | `EFFECT_BFX_TURRET_CRIT_CHANCE` |
 | `bfx_turret_damage`                 | `EFFECT_BFX_TURRET_DAMAGE` |
+| `bfx_gain_materials_on_fruit_collect` | `EFFECT_BFX_GAIN_MATERIALS_ON_FRUIT_COLLECT` |
 
 ## Fixes
 

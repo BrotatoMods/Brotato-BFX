@@ -62,6 +62,9 @@ func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
 		"bfx_turret_attack_speed": 0, #int (%)
 		"bfx_turret_crit_chance": 0, #int (%)
 		"bfx_turret_damage": 0, #int (%)
+
+		# Gain +x materials when you collect a fruit (similar to Bag)
+		"bfx_gain_materials_on_fruit_collect": 0, #int
 	}
 
 	return Utils.merge_dictionaries(vanilla_effects, custom_effects)
