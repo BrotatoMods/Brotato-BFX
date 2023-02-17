@@ -28,21 +28,11 @@ Use these like regular effects with *effect.gd*:
 | `bfx_turret_attack_speed`         | int | Turrets attack `x`% faster |
 | `bfx_turret_crit_chance`          | int | Turrets gain +`x`% crit chance |
 | `bfx_turret_damage`               | int | Turrets deal +`x`% more damage |
-
-### stat_effect.gd
-
-| key   | Description |
-| ----- | ----------- |
-| `bfx_temp_stats_on_dodge` | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
-| `bfx_temp_stats_on_hit`   | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
+| `bfx_temp_stats_on_dodge`         | Similar to vanilla's `temp_stats_on_hit`, but for dodge |
+| `bfx_temp_stats_on_hit`           | Same as vanilla's `temp_stats_on_hit`, but doesn't proc with no invulnerability time † |
 
 <small>† This means the effect won't trigger with items/traits that don't give invulnerability time (ie. Sick and Blood Donation)</small>
 
-#### Usage
-
-- `key` = stat (eg. `stat_max_hp`)
-- `value` = stat value (eg. `5`)
-- `effect_key` = key shown above (eg. `bfx_temp_stats_on_dodge`)
 
 ### item_exploding_effect.gd
 
