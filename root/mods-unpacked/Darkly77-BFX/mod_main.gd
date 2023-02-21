@@ -33,9 +33,6 @@ func _init(modLoader = ModLoader):
 		"entities/units/enemies/enemy.gd",      # EFFECTS: dmg vs. burning enemies
 		"entities/units/player/player.gd",      # EFFECTS: on take damage/dodge, iframes
 		"singletons/item_service.gd",           # EFFECTS: free reroll chance
-
-		# Fixes
-		"singletons/temp_stats.gd", # FIX: Allow using secondary stats in temp_stat
 	]
 
 	for path in extensions:

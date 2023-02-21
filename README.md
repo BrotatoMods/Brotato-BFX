@@ -68,13 +68,3 @@ Effect keys are always `EFFECT_{effect_key}`:
 | `bfx_turret_crit_chance`            | `EFFECT_BFX_TURRET_CRIT_CHANCE` |
 | `bfx_turret_damage`                 | `EFFECT_BFX_TURRET_DAMAGE` |
 | `bfx_gain_materials_on_fruit_collect` | `EFFECT_BFX_GAIN_MATERIALS_ON_FRUIT_COLLECT` |
-
-## Fixes
-
-BFX includes some small patches to vanilla:
-
-### Temp Stats Fix
-
-- You can now use most secondary stats (eg `knockback`) with `temp_stat` effects.
-- This would cause a crash in vanilla, because it only supports primary stats (eg `stat_max_hp`).
-- View the list of supported stats in [temp_stats.gd](root/mods-unpacked/Darkly77-BFX/extensions/singletons/temp_stats.gd).
