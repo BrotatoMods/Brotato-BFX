@@ -39,10 +39,11 @@ func _bfx_gain_items_end_of_wave():
 	if RunData.effects["bfx_gain_items_end_of_wave"] > 0:
 		# Add items
 		for i in RunData.effects["bfx_gain_items_end_of_wave"]:
-			var item_id = Utils.get_rand_element(ProgressData.items_unlocked) # used to use `ItemService.items`
-			var item_data = ItemService.get_element(ItemService.items, item_id)
+			# var item_id = Utils.get_rand_element(ProgressData.items_unlocked) # used to use `ItemService.items`
+			# var item_data = ItemService.get_element(ItemService.items, item_id)
+			var item_data = _bfx_helper_get_random_unlocked_item()
 			RunData.add_item(item_data)
-			ModLoaderUtils.log_info(str("[bfx_gain_items_end_of_wave] Added item: ", tr(item_data.name)), "BFX")
+			ModLoaderUtils.log_info(str("[bfx_gain_items_end_of_wave] Added random item: ", tr(item_data.name)), "BFX")
 
 		# SFX
 		SoundManager.play(level_up_sound, 0, 0, true)
@@ -130,3 +131,29 @@ func _bfx_explode_helper(effect_name:String, position: Vector2, explosion_stats:
 
 		if (Utils.brotils_rng_chance_float(chance)):
 			var _explosion = WeaponService.explode(effect, position, stats.damage, stats.accuracy, stats.crit_chance, stats.crit_damage, stats.burning_data)
+
+
+func _bfx_helper_get_random_unlocked_item():
+	var item_data = Utils.get_rand_element(ItemService.items)
+
+	# Item?: Ensure it's an item
+	if not item_data is ItemData:
+		item_data = _bfx_helper_get_random_unlocked_item()
+
+	# Unlocked?: Ensure the player has unlocked it
+	if ProgressData.items_unlocked.size() > 0 and not ProgressData.items_unlocked.has(item_data.my_id):
+		item_data = _bfx_helper_get_random_unlocked_item()
+
+	# Limited?: Ensure the item doesnt exceed allowed limits
+	if item_data.max_nb > 0 and RunData.items.size() > 0:
+		# @todo: Make into a utility func for Brotils (get_held_item_count)
+		var held_count = 0
+
+		for held_item in RunData.items:
+			if held_item.my_id == item_data.my_id:
+				held_count += 1
+
+		if held_count >= item_data.max_nb:
+			item_data = _bfx_helper_get_random_unlocked_item()
+
+	return item_data
