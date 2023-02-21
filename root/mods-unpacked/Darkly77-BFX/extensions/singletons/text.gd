@@ -2,20 +2,17 @@ extends "res://singletons/text.gd"
 
 const BFX_LOG = "Darkly77-BFX"
 
-#@todo: These don't seem to be working?
+# @note: When adding your effects, they need to be prefixed with "effect_" in
+# the arrays below
 
-# I need to investigate, and see if:
-#   a) they do what I'm expecting them to here,
-#   b) check if it's too late to apply the change, and
-#   c) check if there's anywhere else where these keys are checked (eg. `ItemService.effects`).
-# Also worth working out what the arrays are for
+# @todo: Check if there's anywhere else where these keys are checked, eg:
+# effect_keys_full_serialization, effect_keys_with_weapon_stats
+# ..and maybe: `ItemService.effects`
 
 
 # Extensions
 # =============================================================================
 
-# @todo: Try to check if another mod has already added it; if so, we'll need to
-# call it so we don't break the mod chain
 func _ready()->void:
 	_bfx_add_keys_needing_operator()
 	_bfx_add_keys_needing_percent()
