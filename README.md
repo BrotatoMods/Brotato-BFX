@@ -34,7 +34,6 @@ Use these like regular effects with *effect.gd*:
 
 <small>† This means the effect won't trigger with items/traits that don't give invulnerability time (ie. Sick and Blood Donation)</small>
 
-
 ### item_exploding_effect.gd
 
 All of these accept a chance%.
@@ -45,6 +44,21 @@ All of these accept a chance%.
 | `bfx_explode_on_consumable_collect` | Consumables explode when you collect them (fruit/crate) |
 | `bfx_explode_on_crate_collect`      | Consumables explode when you collect them (crate only) |
 | `bfx_explode_on_fruit_collect`      | Consumables explode when you collect them (fruit only) |
+
+### Custom Difficulties
+
+These effects are only intended to be used with custom difficulties (eg. [CustomDifficultyModes](https://github.com/BrotatoMods/Darkly77-CustomDifficultyModes)). They let you add a reminder item for the current custom difficulty you're on, as the HUD simply shows the danger number.
+
+They are needed because vanilla's `starting_item` effect triggers after choosing a weapon, which is too soon for it to have an effect after choosing a difficulty.
+
+Note that the item/weapon still needs to be added to ItemService (ie. with [ContentLoader](https://github.com/BrotatoMods/Brotato-ContentLoader)).
+
+For the `text_key`, use `[EMPTY]` if you want to hide the effect description, otherwise use `starting_item`.
+
+| Key | Description |
+| --- | ----------- |
+| `bfx_starting_difficulty_item` | Start with a specific item |
+| `bfx_starting_difficulty_weapon` | Start with a specific weapon |
 
 
 ## Effect Text Keys

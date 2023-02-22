@@ -33,6 +33,10 @@ func _init(modLoader = ModLoader):
 		"entities/units/enemies/enemy.gd",      # EFFECTS: dmg vs. burning enemies
 		"entities/units/player/player.gd",      # EFFECTS: on take damage/dodge, iframes
 		"singletons/item_service.gd",           # EFFECTS: free reroll chance
+
+		# EFFECTS: `bfx_starting_difficulty_item`, `bfx_starting_difficulty_weapon`
+		# (used for custom difficulties, to add items/weapons)
+		"ui/menus/run/difficulty_selection/difficulty_selection.gd",
 	]
 
 	for path in extensions:

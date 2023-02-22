@@ -65,6 +65,9 @@ func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
 
 		# Gain +x materials when you collect a fruit (similar to Bag)
 		"bfx_gain_materials_on_fruit_collect": 0, #int
+
+		"bfx_starting_difficulty_item": [], # array (string)
+		"bfx_starting_difficulty_weapon": [], # array (string)
 	}
 
 	return Utils.merge_dictionaries(vanilla_effects, custom_effects)
@@ -76,3 +79,27 @@ func _bfx_effect_keys_full_serialization()->void:
 	# @todo: Work out why this doesn't work, and fix it
 	# effect_keys_full_serialization.push_back("bfx_explode_on_hit_chance")
 	pass
+
+
+
+# New API Methods
+# =============================================================================
+
+# Adds methods to RunData, to be accessed from other files
+
+# Same as `RunData.add_starting_items_and_weapons()`, but is triggered after
+# selecting a difficulty (difficulty_selection.gd), rather than a weapon like
+# in vanilla (difficulty_selection.gd)
+#@todo: Could we make it so that you don't have to add the item to ItemService?
+func bfx_add_starting_difficulty_items_and_weapons()->void :
+	if effects["bfx_starting_difficulty_item"].size() > 0:
+		for item_id in effects["bfx_starting_difficulty_item"]:
+			for i in item_id[1]:
+				var item = ItemService.get_element(ItemService.items, item_id[0])
+				add_item(item)
+
+	if effects["bfx_starting_difficulty_weapon"].size() > 0:
+		for weapon_id in effects["bfx_starting_difficulty_weapon"]:
+			for i in weapon_id[1]:
+				var weapon = ItemService.get_element(ItemService.weapons, weapon_id[0])
+				var _weapon = add_weapon(weapon)
