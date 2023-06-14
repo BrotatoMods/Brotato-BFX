@@ -1,13 +1,13 @@
 extends Node
 
 const MOD_DIR = "Darkly77-BFX/"
-const BFX_LOG = "Darkly77-BFX"
+const BFX_LOG_MOD_MAIN = "Darkly77-BFX"
 
 var dir = ""
 var ext_dir = ""
 
 func _init(modLoader = ModLoader):
-	ModLoaderUtils.log_info("Init", BFX_LOG)
+	ModLoaderUtils.log_info("Init", BFX_LOG_MOD_MAIN)
 	dir = modLoader.UNPACKED_DIR + MOD_DIR
 	ext_dir = dir + "extensions/"
 
@@ -22,9 +22,9 @@ func _init(modLoader = ModLoader):
 	# Add extensions
 	var extensions = [
 		# Setup
-		"singletons/debug_service.gd",  # SETUP: Installs extender for "res://ui/menus/shop/shop.gd"
 		"singletons/run_data.gd",       # SETUP: Keys for all BFX's custom effects
 		"singletons/text.gd",           # SETUP: Keys needing operators/percent
+		"singletons/debug_service.gd",  # SETUP: Installs extender for "res://ui/menus/shop/shop.gd"
 
 		# Effects
 		"main.gd",                              # EFFECTS: end of wave, level up
@@ -44,4 +44,4 @@ func _init(modLoader = ModLoader):
 
 
 func _ready():
-	ModLoaderUtils.log_info("Done", BFX_LOG)
+	ModLoaderUtils.log_info("Done", BFX_LOG_MOD_MAIN)

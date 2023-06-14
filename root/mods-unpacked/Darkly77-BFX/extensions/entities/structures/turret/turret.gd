@@ -1,7 +1,5 @@
 extends "res://entities/structures/turret/turret.gd"
 
-const BFX_LOG = "Darkly77-BFX"
-
 # Affects individual turret entities
 
 

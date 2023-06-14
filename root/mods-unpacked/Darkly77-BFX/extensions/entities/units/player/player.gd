@@ -1,7 +1,5 @@
 extends "res://entities/units/player/player.gd"
 
-const BFX_LOG = "Darkly77-BFX"
-
 var _bfx_explode_on_hit_stats = null
 var _bfx_explode_on_consumable_collect_stats = null
 var _bfx_explode_on_fruit_collect_stats = null

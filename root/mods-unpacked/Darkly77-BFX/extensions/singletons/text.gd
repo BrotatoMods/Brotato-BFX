@@ -1,7 +1,5 @@
 extends "res://singletons/text.gd"
 
-const BFX_LOG = "Darkly77-BFX"
-
 # @note: When adding your effects, they need to be prefixed with "effect_" in
 # the arrays below
 

@@ -1,6 +1,6 @@
 extends "res://main.gd"
 
-const BFX_LOG = "Darkly77-BFX"
+const BFX_LOG_MAIN = "Darkly77-BFX"
 
 
 # Extensions
@@ -75,7 +75,7 @@ func _bfx_on_levelup_gain_random_stat():
 			# Triggers `on_stat_added` in floating_text_manager.gd (stat:String, value:int, db_mod:float = 0.0)
 			RunData.emit_signal("stat_added", random_stat_key, 1, -15.0)
 
-			ModLoaderUtils.log_info(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), BFX_LOG)
+			ModLoaderUtils.log_info(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), BFX_LOG_MAIN)
 
 
 # When you pick up a consumable (fruit/crate)
