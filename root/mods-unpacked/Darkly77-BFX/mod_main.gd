@@ -7,17 +7,17 @@ var dir = ""
 var ext_dir = ""
 
 func _init(modLoader = ModLoader):
-	ModLoaderUtils.log_info("Init", BFX_LOG_MOD_MAIN)
-	dir = modLoader.UNPACKED_DIR + MOD_DIR
+	ModLoaderLog.info("Init", BFX_LOG_MOD_MAIN)
+	dir = ModLoaderMod.get_unpacked_dir() + MOD_DIR
 	ext_dir = dir + "extensions/"
 
 	# Add translations
-	modLoader.add_translation_from_resource(dir + "translations/mod_bfx.en.translation")
+	ModLoaderMod.add_translation(dir + "translations/mod_bfx.en.translation")
 
 	# Add extensions [old approach]
-	# modLoader.install_script_extension(ext_dir + "entities/units/player/player.gd")
-	# modLoader.install_script_extension(ext_dir + "singletons/debug_service.gd")
-	# modLoader.install_script_extension(ext_dir + "singletons/run_data.gd")
+	# ModLoaderMod.install_script_extension(ext_dir + "entities/units/player/player.gd")
+	# ModLoaderMod.install_script_extension(ext_dir + "singletons/debug_service.gd")
+	# ModLoaderMod.install_script_extension(ext_dir + "singletons/run_data.gd")
 
 	# Add extensions
 	var extensions = [
@@ -40,8 +40,8 @@ func _init(modLoader = ModLoader):
 	]
 
 	for path in extensions:
-		modLoader.install_script_extension(ext_dir + path)
+		ModLoaderMod.install_script_extension(ext_dir + path)
 
 
 func _ready():
-	ModLoaderUtils.log_info("Done", BFX_LOG_MOD_MAIN)
+	ModLoaderLog.info("Done", BFX_LOG_MOD_MAIN)

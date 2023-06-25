@@ -18,7 +18,7 @@ func init_effects()->Dictionary:
 
 # Adds BFX's custom effects to the vanilla set
 func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
-	ModLoaderUtils.log_info("Adding custom effects", BFX_LOG_RUN_DATA)
+	ModLoaderLog.info("Adding custom effects", BFX_LOG_RUN_DATA)
 
 	# Note: Some effects will need their keys adding to the extended text.gd
 	# See: mods-unpacked/Darkly77-BFX/extensions/singletons/text.gd

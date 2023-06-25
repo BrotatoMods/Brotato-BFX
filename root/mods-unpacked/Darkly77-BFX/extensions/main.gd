@@ -43,7 +43,7 @@ func _bfx_gain_items_end_of_wave():
 			# var item_data = ItemService.get_element(ItemService.items, item_id)
 			var item_data = _bfx_helper_get_random_unlocked_item()
 			RunData.add_item(item_data)
-			ModLoaderUtils.log_info(str("[bfx_gain_items_end_of_wave] Added random item: ", tr(item_data.name)), "BFX")
+			ModLoaderLog.info(str("[bfx_gain_items_end_of_wave] Added random item: ", tr(item_data.name)), "BFX")
 
 		# SFX
 		SoundManager.play(level_up_sound, 0, 0, true)
@@ -75,7 +75,7 @@ func _bfx_on_levelup_gain_random_stat():
 			# Triggers `on_stat_added` in floating_text_manager.gd (stat:String, value:int, db_mod:float = 0.0)
 			RunData.emit_signal("stat_added", random_stat_key, 1, -15.0)
 
-			ModLoaderUtils.log_info(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), BFX_LOG_MAIN)
+			ModLoaderLog.info(str("[bfx_on_levelup_gain_random_stat] Gained +1 to random stat: ", random_stat_key), BFX_LOG_MAIN)
 
 
 # When you pick up a consumable (fruit/crate)

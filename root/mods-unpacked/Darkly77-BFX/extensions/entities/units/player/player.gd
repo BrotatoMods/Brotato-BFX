@@ -31,7 +31,7 @@ func update_player_stats()->void:
 # Note: `bypass_invincibility` is true when triggered via `_on_LoseHealthTimer_timeout` (via effect "lose_hp_per_second" - Sick/Blood Donation)
 # Note: `dodgeable` is true when true when ??? (see `current_stats.dodge`)
 func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_applied:bool = true, custom_sound:Resource = null, base_effect_scale:float = 1.0, bypass_invincibility:bool = false)->Array:
-	# ModLoaderUtils.log_info("take_damage", "BFX")
+	# ModLoaderLog.info("take_damage", "BFX")
 
 	if _invincibility_timer.is_stopped() or bypass_invincibility:
 		# See: `func take_damage` in unit.gd: [full_dmg_value, dmg_dealt, is_dodge]
