@@ -73,11 +73,25 @@ func _bfx_add_custom_effects(vanilla_effects:Dictionary)->Dictionary:
 	return Utils.merge_dictionaries(vanilla_effects, custom_effects)
 
 
-# Adds BFX's effects that have data that's not just ints, so needs full
-# serialization
+# Adds BFX's effects that have data that references resources, so need full
+# serialization. Without this, the save file would point to things like
+# "[Resource:16565]", instead of actually saving the data for that resource.
+# This can cause issues with other mods (eg. Run History), and could prevent
+# returning to a saved run.
 func _bfx_effect_keys_full_serialization()->void:
-	# @todo: Work out why this doesn't work, and fix it
-	# effect_keys_full_serialization.push_back("bfx_explode_on_hit_chance")
+	# These effects all reference an explosion stats resource
+	effect_keys_full_serialization.push_back("bfx_explode_on_hit_chance")
+	effect_keys_full_serialization.push_back("bfx_explode_on_consumable_collect")
+	effect_keys_full_serialization.push_back("bfx_explode_on_crate_collect")
+	effect_keys_full_serialization.push_back("bfx_explode_on_fruit_collect")
+
+	# These effects are all fine. They don't reference resources, so probably
+	# don't really need to be serialized. But they do store an array of data,
+	# which may benefit from being serialized, so we'll include them just in case.
+	effect_keys_full_serialization.push_back("bfx_temp_stats_on_hit")
+	effect_keys_full_serialization.push_back("bfx_temp_stats_on_dodge")
+	effect_keys_full_serialization.push_back("bfx_starting_difficulty_item")
+	effect_keys_full_serialization.push_back("bfx_starting_difficulty_weapon")
 	pass
 
 
